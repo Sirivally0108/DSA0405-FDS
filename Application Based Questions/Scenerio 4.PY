@@ -1,29 +1,32 @@
-from sklearn.linear_model import LinearRegression
+import csv
 import numpy as np
+from sklearn.linear_model import LinearRegression
 
-# Features: [Age, Kms_Driven, Engine_CC]
-X = np.array([
-    [2, 25000, 1200],
-    [5, 60000, 1500],
-    [3, 40000, 1300],
-    [7, 90000, 1800],
-    [1, 15000, 1000]
-])
+# Read CSV file
+data = []
+with open("car_data.csv", "r") as file:
+    reader = csv.reader(file)
+    next(reader)
+    for row in reader:
+        data.append([int(row[1]), int(row[2]), int(row[3]), int(row[4])])
 
-# Target: Resale Price
-y = np.array([650000, 420000, 520000, 300000, 720000])
+data = np.array(data)
 
-# Train Linear Regression model
+# Features and Target
+X = data[:, :3]
+y = data[:, 3]
+
+# Train model
 model = LinearRegression()
 model.fit(X, y)
 
 # User input
-age = int(input("Enter Car Age (Years): "))
+age = int(input("Enter Car Age: "))
 kms = int(input("Enter Kilometers Driven: "))
 engine = int(input("Enter Engine Capacity (CC): "))
 
 new_car = np.array([[age, kms, engine]])
 
-predicted_price = model.predict(new_car)
+price = model.predict(new_car)
 
-print("Estimated Resale Price = ₹", predicted_price[0])
+print("Estimated Resale Price = ₹", round(price[0], 2))

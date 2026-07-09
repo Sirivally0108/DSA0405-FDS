@@ -1,27 +1,35 @@
-from sklearn.linear_model import LogisticRegression
+import csv
 import numpy as np
-# Features: [Num_Links, Num_Caps_Words, Email_Length]
-X = np.array([
-    [1, 3, 120],
-    [6, 15, 300],
-    [0, 1, 80],
-    [4, 10, 250],
-    [2, 5, 160]
-])
-# Target: Spam (1) or Not Spam (0)
-y = np.array([0, 1, 0, 1, 0])
+from sklearn.linear_model import LogisticRegression
 
-# Create and train the Logistic Regression model
+# Read CSV file
+data = []
+with open("email_data.csv", "r") as file:
+    reader = csv.reader(file)
+    next(reader)      # Skip header
+    for row in reader:
+        data.append([int(row[1]), int(row[2]), int(row[3]), int(row[4])])
+
+data = np.array(data)
+
+# Features and Target
+X = data[:, :3]
+y = data[:, 3]
+
+# Train model
 model = LogisticRegression()
 model.fit(X, y)
-# New email to predict
-# Example: 3 links, 8 capitalized words, 200 email length
-new_email = np.array([[3, 8, 200]])
 
-# Prediction
+# User input
+links = int(input("Enter Number of Links: "))
+caps = int(input("Enter Number of Capitalized Words: "))
+length = int(input("Enter Email Length: "))
+
+new_email = np.array([[links, caps, length]])
+
 prediction = model.predict(new_email)
 
 if prediction[0] == 1:
-    print("The new email is SPAM.")
+    print("Prediction: SPAM Email")
 else:
-    print("The new email is NOT SPAM.")
+    print("Prediction: NOT SPAM Email")

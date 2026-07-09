@@ -1,19 +1,22 @@
-from sklearn.tree import DecisionTreeClassifier, export_text
+import csv
 import numpy as np
+from sklearn.tree import DecisionTreeClassifier, export_text
 
-# Features: [Income, Credit_Score, Existing_Loans]
-X = np.array([
-    [45000, 720, 0],
-    [30000, 650, 1],
-    [60000, 780, 0],
-    [28000, 620, 2],
-    [52000, 710, 1]
-])
+# Read CSV file
+data = []
+with open("loan_data.csv", "r") as file:
+    reader = csv.reader(file)
+    next(reader)
+    for row in reader:
+        data.append([int(row[1]), int(row[2]), int(row[3]), int(row[4])])
 
-# Target: Approved (1) or Rejected (0)
-y = np.array([1, 0, 1, 0, 1])
+data = np.array(data)
 
-# Train Decision Tree (CART)
+# Features and Target
+X = data[:, :3]
+y = data[:, 3]
+
+# Train CART model
 model = DecisionTreeClassifier(criterion="gini", random_state=0)
 model.fit(X, y)
 
@@ -31,8 +34,6 @@ if prediction[0] == 1:
 else:
     print("Loan Rejected")
 
-# Display Decision Rules
 print("\nDecision Tree Rules:")
-rules = export_text(model,
-                    feature_names=["Income", "Credit_Score", "Existing_Loans"])
-print(rules)
+print(export_text(model,
+feature_names=["Income", "Credit_Score", "Existing_Loans"]))
