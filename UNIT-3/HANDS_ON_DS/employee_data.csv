@@ -1,0 +1,6 @@
+Employee_ID,Name,Age,Department,Salary
+E1,Alice,25,HR,45000
+E2,Bob,30,IT,55000
+E3,Charlie,28,Finance,
+E4,David,,IT,60000
+E5,Eva,35,HR,52000
