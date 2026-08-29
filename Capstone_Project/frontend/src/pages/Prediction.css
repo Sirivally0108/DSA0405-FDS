@@ -1,0 +1,89 @@
+.prediction-content {
+  padding-top: 64px;
+  max-width: 720px;
+}
+
+.prediction-empty {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  max-width: 460px;
+}
+
+.prediction-form {
+  margin-top: 28px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.prediction-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: rgba(246, 248, 242, 0.7);
+}
+
+.prediction-field select,
+.prediction-field input {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(246, 248, 242, 0.2);
+  background: rgba(10, 25, 17, 0.5);
+  color: var(--color-cream-50);
+}
+
+.prediction-field select option {
+  color: #111;
+}
+
+.prediction-hint {
+  font-size: 13px;
+  color: rgba(246, 248, 242, 0.6);
+}
+
+.prediction-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.prediction-result-error {
+  padding: 16px 20px;
+}
+
+.prediction-result {
+  margin-top: 6px;
+  padding: 22px;
+  border-radius: var(--radius-md);
+  background: rgba(63, 143, 92, 0.14);
+  border: 1px solid rgba(143, 215, 168, 0.28);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.prediction-result-label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-leaf-300);
+}
+
+.prediction-result-value {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-cream-50);
+}
+
+.prediction-result-meta {
+  font-size: 12.5px;
+  color: rgba(246, 248, 242, 0.6);
+}

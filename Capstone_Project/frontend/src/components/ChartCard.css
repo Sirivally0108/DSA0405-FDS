@@ -1,0 +1,31 @@
+.chart-card {
+  padding: 22px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chart-card-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--color-cream-50);
+}
+
+.chart-card-desc {
+  font-size: 13px;
+  color: rgba(246, 248, 242, 0.62);
+}
+
+.chart-card-image-wrap {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: white;
+  border: 1px solid rgba(143, 215, 168, 0.14);
+}
+
+.chart-card-image-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

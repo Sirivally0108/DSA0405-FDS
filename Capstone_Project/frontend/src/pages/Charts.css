@@ -1,0 +1,24 @@
+.charts-content {
+  padding-top: 64px;
+}
+
+.charts-meta {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: rgba(246, 248, 242, 0.65);
+}
+
+.charts-grid {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 22px;
+}
+
+.charts-actions {
+  margin-top: 32px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
